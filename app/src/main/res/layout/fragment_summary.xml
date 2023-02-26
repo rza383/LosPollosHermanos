@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SummaryFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.lospolloshermanos.model.OrderViewModel" />
+
+        <variable
+            name="fragmentSummary"
+            type="com.example.lospolloshermanos.SummaryFragment" />
+
+        <variable
+            name="mainDish"
+            type="String" />
+
+        <variable
+            name="extras"
+            type="String" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/side_margin">
+            
+            <TextView
+                android:id="@+id/customer_name_label"
+                style="@style/Widget.LosPollos.TextView.OrderSummary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/customer_name"
+                android:textAllCaps="true"
+                android:textStyle="normal"/>
+
+            <TextView
+                android:id="@+id/customer_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:text="@{viewModel.name}"
+                tools:text="Abylay"
+                android:textStyle="bold"/>
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.LosPollos.Divider"
+                android:layout_marginTop="@dimen/side_margin"/>
+
+            <TextView
+                android:id="@+id/customer_address_label"
+                style="@style/Widget.LosPollos.TextView.OrderSummary"
+                android:layout_marginTop="@dimen/side_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/customer_address"
+                android:textAllCaps="true"
+                android:textStyle="normal"/>
+
+            <TextView
+                android:id="@+id/customer_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:text="@{viewModel.address}"
+                tools:text="Los Angeles"
+                android:textStyle="bold"/>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.LosPollos.Divider"
+                android:layout_marginTop="@dimen/side_margin"/>
+
+            <TextView
+                android:id="@+id/customer_order_label"
+                style="@style/Widget.LosPollos.TextView.OrderSummary"
+                android:layout_marginTop="@dimen/side_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order"
+                android:textAllCaps="true"
+                android:textStyle="normal"/>
+
+            <TextView
+                android:id="@+id/customer_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:text="@{mainDish}"
+                tools:text="Chicken wings"
+                android:textStyle="bold"/>
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.LosPollos.Divider"
+                android:layout_marginTop="@dimen/side_margin"/>
+
+            <TextView
+                android:id="@+id/customer_extras_label"
+                style="@style/Widget.LosPollos.TextView.OrderSummary"
+                android:layout_marginTop="@dimen/side_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/extras"
+                android:textAllCaps="true"
+                android:textStyle="normal"/>
+
+            <TextView
+                android:id="@+id/customer_extras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:text="@{extras}"
+                tools:text="Hot sauce"
+                android:textStyle="bold"/>
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.LosPollos.Divider"
+                android:layout_marginTop="@dimen/side_margin"/>
+
+
+            <TextView
+                android:id="@+id/customer_pickup_date_label"
+                style="@style/Widget.LosPollos.TextView.OrderSummary"
+                android:layout_marginTop="@dimen/side_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pickup_date"
+                android:textAllCaps="true"
+                android:textStyle="normal"/>
+
+            <TextView
+                android:id="@+id/customer_pickup_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:text="@{viewModel.date}"
+                tools:text="Monday"
+                android:textStyle="bold"/>
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.LosPollos.Divider"
+                android:layout_marginTop="@dimen/side_margin"/>
+
+            <TextView
+                android:id="@+id/total"
+                style="@style/Widget.LosPollos.TextView.OrderSummary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/side_margin"
+                android:text="@{viewModel.price}"
+                tools:text="Total $5.00" />
+
+            <Button
+                android:id="@+id/send_order_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/side_margin"
+                android:text="@string/send_order"
+                android:onClick="@{() -> fragmentSummary.sendToWPP()}"/>
+
+            <Button
+                android:id="@+id/cancel_button"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:onClick="@{() -> fragmentSummary.cancelOrder()}"
+                android:layout_marginTop="@dimen/side_margin"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

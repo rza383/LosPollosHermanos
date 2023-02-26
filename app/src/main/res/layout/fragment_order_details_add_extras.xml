@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.lospolloshermanos.model.OrderViewModel" />
+
+        <variable
+            name="addCheese"
+            type="String" />
+
+        <variable
+            name="addSauce"
+            type="String" />
+
+        <variable
+            name="additionalDrink"
+            type="String" />
+
+        <variable
+            name="additionalJalapeno"
+            type="String" />
+
+        <variable
+            name="extraPrice"
+            type="Double" />
+
+        <variable
+            name="drinkPrice"
+            type="Double" />
+
+        <variable
+            name="orderExtrasFragment"
+            type="com.example.lospolloshermanos.OrderDetailsAddExtras" />
+
+
+        <variable
+            name="onions"
+            type="String" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".OrderDetailsAddExtras">
+
+        <!-- TODO: Update blank fragment layout -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/side_margin">
+
+                <RadioGroup
+                    android:id="@+id/extra_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RadioButton
+                        android:id="@+id/extra_cheese"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/extra_cheese(extraPrice)}"
+                        android:onClick="@{() -> orderExtrasFragment.setExtras(extraPrice, addCheese)}"/>
+
+                    <RadioButton
+                        android:id="@+id/extra_sauce"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/extra_sauce(extraPrice)}"
+                        android:onClick="@{() -> orderExtrasFragment.setExtras(extraPrice, addSauce)}"/>
+
+                    <RadioButton
+                        android:id="@+id/jalapeno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/jalapeno(extraPrice)}"
+                        android:onClick="@{() -> orderExtrasFragment.setExtras(extraPrice, additionalJalapeno)}"/>
+
+                    <RadioButton
+                        android:id="@+id/drink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/drink(drinkPrice)}"
+                        android:onClick="@{() -> orderExtrasFragment.setExtras(drinkPrice, additionalDrink)}"/>
+
+                    <RadioButton
+                        android:id="@+id/no_onions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/remove_onion"
+                        android:onClick="@{() -> orderExtrasFragment.setExtras(0.0, onions)}"/>
+
+                </RadioGroup>
+
+                <View
+                    android:id="@+id/divider"
+                    style="@style/Widget.LosPollos.Divider"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/side_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/extra_options" />
+
+                <TextView
+                    android:id="@+id/subtotal"
+                    style="@style/Widget.LosPollos.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/side_margin"
+                    android:text="@{@string/total_price(viewModel.price)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider"
+                    tools:text="Subtotal $5.00" />
+
+                <Button
+                    android:id="@+id/next_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/side_margin"
+                    android:layout_marginStart="@dimen/start_margin"
+                    android:text="@string/add_to_order"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/subtotal"
+                    android:onClick="@{() -> orderExtrasFragment.submitOrder()}"/>
+
+                <Button
+                    android:id="@+id/cancel_button"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel"
+                    app:layout_constraintTop_toTopOf="@id/next_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginEnd="@dimen/side_margin"
+                    android:onClick="@{() -> orderExtrasFragment.cancelOrder()}"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </FrameLayout>
+</layout>

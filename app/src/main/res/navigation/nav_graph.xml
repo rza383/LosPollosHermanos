@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    android:label="@string/summary_label"
+    app:startDestination="@id/menuFragment">
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.lospolloshermanos.MenuFragment"
+        android:label="@string/label_menu"
+        tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/action_menu_to_orderDetailsAddExtras"
+            app:destination="@id/orderDetailsAddExtras" />
+        <action
+            android:id="@+id/action_menu_to_completeOrder"
+            app:destination="@id/completeOrder"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailsAddExtras"
+        android:name="com.example.lospolloshermanos.OrderDetailsAddExtras"
+        android:label="@string/extras_label"
+        tools:layout="@layout/fragment_order_details_add_extras">
+        <action
+            android:id="@+id/action_orderDetailsAddExtras_to_menu"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/menuFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="dish"
+            app:argType="string" />
+        <argument
+            android:name="price"
+            app:argType="float" />
+    </fragment>
+    <fragment
+        android:id="@+id/completeOrder"
+        android:name="com.example.lospolloshermanos.CompleteOrder"
+        android:label="@string/customer_info_label"
+        tools:layout="@layout/fragment_complete_order">
+        <action
+            android:id="@+id/action_completeOrder_to_menu"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/menuFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_completeOrder_to_summaryFragment"
+            app:destination="@id/summaryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/summaryFragment"
+        android:name="com.example.lospolloshermanos.SummaryFragment"
+        android:label="@string/summary_label"
+        tools:layout="@layout/fragment_summary">
+        <action
+            android:id="@+id/action_summaryFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+</navigation>
